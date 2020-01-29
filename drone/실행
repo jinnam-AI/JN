@@ -1,0 +1,25 @@
+-image
+./darknet detect cfg/yolov3-tiny.cfg model/yolov3-tiny.weights ~/PycharmProjects/data/video-test/sequences/uav0000097_00000_v/0000001.jpg
+./darknet detector test cfg/coco.data cfg/yolov3-tiny.cfg model/yolov3-tiny.weights data/0001.jpg
+
+./darknet detector test cfg/coco.data cfg/yolov3-tiny.cfg model/yolov3-tiny.weights data/drone/DET/VisDrone2019-DET-train/images/0000002_00005_d_0000014.jpg
+
+./darknet detector test data/my_yolo.data cfg/my_yolov3-tiny.cfg model/my_yolov3-tiny.weights data/drone/DET/VisDrone2019-DET-train/images/0000016_01352_d_0000069.jpg
+
+-video
+./darknet detector demo cfg/coco.data cfg/yolov3-tiny.cfg model/yolov3-tiny.weights data/projectver31.avi -thresh 0.4
+
+./darknet detector demo data/my_yolo.data cfg/my_yolov3-tiny.cfg backup/my_yolov3-tiny.backup data/projectver31.avi -thresh 0.4
+
+./darknet detector demo data/my_yolo.data cfg/my_yolov3-tiny.cfg model/my_yolov3-tiny.weights data/test.mp4 -thresh 0.2
+
+-webcam
+./darknet detector demo data/my_yolo.data cfg/yolov3-tiny.cfg model/yolov3-tiny.weights -c 2
+
+-----------------------------------------------------------------------------------
+# 추출
+./darknet partial cfg/yolov3-tiny.cfg model/yolov3-tiny.weights yolov3-tiny.conv.15 15
+
+# train
+./darknet detector train data/my_yolo.data cfg/my_yolov3-tiny.cfg model/yolov3-tiny.conv.15
+./darknet detector train data/my_yolo.data cfg/my_yolov3-tiny.cfg backup/my_yolov3-tiny.backup
